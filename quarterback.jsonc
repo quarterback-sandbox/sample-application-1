@@ -1,0 +1,48 @@
+{
+    "id": "sample-application-1",
+    "name": "Sample Application 1",
+    "description": "A sample applicaiton to show off quaterback features",
+
+    "documentation": [
+        {
+            "name": "Readme",
+            "url": "https://github.com/quarterback-sandbox/application-sandbox-1/blob/main/README.md"
+        }
+    ],
+
+    "changelog": "github",
+    "github": {
+        "releases": {
+            "tagPrefix": "release/"
+        },
+        "repo": "quaterback-sandbox/sample-application-1",
+        "trunkBranch": "main"
+    },
+
+    "environments": [
+        {
+            "id": "production",
+            "type": "production",
+            "name": "Sample Application 1 Production",
+            "region": {
+                "id": "global",
+                "name": "Global"
+            },
+            "deploy": {
+                "type": "manual",
+                "githubName": "production",
+                "strategy": "github-workflow",
+                "strategyOptions": {
+                    "workflow": "displatch-production.yaml"
+                }
+            },
+            "endpoints": ["https://qb-sample-1.quarterbackapp.com/"],
+
+            "notifications": {
+                "slack": {
+                    "channel": "quarterback-test"
+                }
+            }
+        }
+    ]
+}
